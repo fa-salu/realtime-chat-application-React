@@ -1,6 +1,10 @@
 import { createServer } from "http";
 import { Server } from "socket.io";
 import { v4 as uuidv4 } from "uuid";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 
 const httpServer = createServer();
 const io = new Server(httpServer, {
@@ -48,8 +52,8 @@ io.on("connection", async (socket) => {
       userId: socket.userId,
       username: socket.username,
       message,
-    })
-  })
+    });
+  });
 });
 
 console.log("Listening to port...");

@@ -8,7 +8,7 @@ function Chat({ user, Message, messages, setMssage, sendMessage }) {
   return (
     <ChatContainer>
       <ChatHeader user={user} />
-      <div className="position-relative chat-height overflow-auto">
+      <div className="position-relative overflow-auto">
         <ScrollableFeed>
           <div className="d-flex flex-column p-4">
             {messages.map((message, index) => {

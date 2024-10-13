@@ -12,10 +12,6 @@ code {
   overflow: hidden;
 }
 
-.chat-height {
-  height: calc(100% - 20vh) !important;
-}
-
 .chat-message-left, .chat-message-right {
   display: flex;
   flex-shrink: 0;
@@ -30,11 +26,6 @@ code {
   margin-left: auto;
 }
 
-.styel_scrollable-div__prSCv {
-  max-height: calc(100% - 2px) !important;
-  height: calc(100% - 2px) !important;
-  overflow-y: auto;
-}
 
 .chat-input {
   position: sticky;
