@@ -21,7 +21,7 @@ import React from "react";
 
 function ChatContainer(props) {
   return (
-    <div className="card border-2 border-info w-100 vh-95 d-flex flex-column">
+    <div className="card border-2 border-info w-100 vh-95 d-flex flex-column chat-window ">
       {props.children}
     </div>
   );

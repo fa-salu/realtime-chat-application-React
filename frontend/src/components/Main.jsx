@@ -13,7 +13,7 @@ export default function Main({ socket }) {
     socket.on("users", (users) => {
       const messagesArr = [];
       for (const { userId, username } of users) {
-        const newMessage = { type: "UserStatus", userId, username };
+        const newMessage = { type: "userStatus", userId, username };
         messagesArr.push(newMessage);
       }
       setMessages([...messages, ...messagesArr]);
@@ -21,6 +21,21 @@ export default function Main({ socket }) {
     });
     socket.on("session", ({ userId, username }) => {
       setUser({ userId, username });
+    });
+
+    socket.on("user connected", ({ userId, username }) => {
+      const newMessage = { type: "userStatus", userId, username };
+      setMessages([...messages, newMessage]);
+    });
+
+    socket.on("new message", ({userId, username, message}) => {
+      const newMessage = {
+        type: "message",
+        userId: userId,
+        username: username,
+        message,
+      };
+      setMessages([...messages, newMessage])
     });
   }, [socket, messages]);
 
@@ -30,16 +45,34 @@ export default function Main({ socket }) {
     socket.connect();
   }
 
+  function sendMessage() {
+    socket.emit("new message", message);
+
+    const newMessage = {
+      type: "message",
+      userId: user.userId,
+      username: user.username,
+      message,
+    };
+    setMessages([...messages, newMessage])
+    setMessage("")
+  }
+
   return (
     <div>
       <main className="content">
         <div className="container mt-3">
           {user.userId && (
-            <Chat user={user} message={message} messages={messages} setMessage={setMessage} />
+            <Chat
+              user={user}
+              message={message}
+              messages={messages}
+              setMssage={setMessage}
+              sendMessage={sendMessage}
+            />
           )}
           {!user.userId && (
             <Login
-              // handlechange={handlechange}
               logNewUser={logNewUser}
               setNewUser={setNewUser}
               newUser={newUser}
