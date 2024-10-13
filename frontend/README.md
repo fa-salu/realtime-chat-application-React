@@ -1,8 +1,21 @@
-# React + Vite
+# Real-Time Chat Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
+This is a frontend real-time chat application built with React and Socket.io, allowing users to create profiles and engage in chat conversations. The application has a clean interface styled with Bootstrap.
 
-Currently, two official plugins are available:
+## Features
+- User profile creation
+- Real-time messaging with Socket.io
+- Chat interface styled with Bootstrap
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
+- **Frontend:** React, Bootstrap
+- **Real-time Communication:** Socket.io
+
+## Getting Started
+To get a local copy of this project up and running, follow these steps:
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/fa-salu/realtime-chat-application-React.git
+   cd chat-app
