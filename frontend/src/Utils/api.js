@@ -14,14 +14,3 @@ export const registerUser = async (userData) => {
   return response.data;
 };
 
-// API to get all posts
-export const getPosts = async () => {
-  const response = await axios.get(`${API_URL}/posts`);
-  return response;
-};
-
-// API to get user profile
-export const getUser = async (userId) => {
-  const response = await axios.get(`${API_URL}/users/${userId}`);
-  return response;
-};

@@ -1,24 +1,35 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import ProfilePage from './pages/ProfilePage';
-import Feed from './components/Feed';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "font-awesome/css/font-awesome.css";
+import { io } from "socket.io-client";
+import React, { useState } from "react";
+import NewUser from "./components/NewUser";
 
-function App() {
+const App = () => {
+  const [newUser, setNewUser] = useState("");
+  const [user, setUser] = useState("");
+
+  function handlechange({ currentTarget: input }) {
+    setNewUser(input.value);
+  }
+
+  function logNewUser() {
+    setUser(newUser);
+  }
+
   return (
-    <AuthProvider>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/profile/:userId" element={<ProfilePage />} />
-        <Route path="/feed" element={<Feed />} />
-      </Routes>
-    </AuthProvider>
+    <main className="content">
+      <div className="container mt-3">
+        {user && <div>Logged in as {user}</div>}
+        {!user && (
+          <NewUser
+            handlechange={handlechange}
+            logNewUser={logNewUser}
+            newUser={newUser}
+          />
+        )}
+      </div>
+    </main>
   );
-}
+};
 
 export default App;
