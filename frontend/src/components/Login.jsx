@@ -1,6 +1,6 @@
 import React from 'react'
 
-function NewUser({newUser, handlechange, logNewUser}) {
+function Login({newUser, setNewUser, logNewUser}) {
   return (
     <div>
        <div className="card w-100 text-center border-white">
@@ -17,7 +17,7 @@ function NewUser({newUser, handlechange, logNewUser}) {
                     className="form-control mb-3"
                     placeholder="Username"
                     autoComplete="off"
-                    onChange={handlechange}
+                    onChange={({currentTarget: input}) => setNewUser(input.value)}
                     onKeyPress={(e) =>
                       e.code === "Enter" ? logNewUser() : null
                     }
@@ -31,4 +31,4 @@ function NewUser({newUser, handlechange, logNewUser}) {
   )
 }
 
-export default NewUser
+export default Login
